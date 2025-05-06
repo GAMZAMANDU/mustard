@@ -10,17 +10,17 @@ export interface Reviewer {
   img: string;
 }
 
-export interface ReviewPosition {
+export interface CommentPosition {
   x: number;
   y: number;
   page: string;
 }
 
-export interface Review {
+export interface Comments {
   id: string;
   contents: string;
   created_at: Date;
   reviewerId: string;
   tag: string;
-  position: ReviewPosition;
+  position: CommentPosition;
 }
