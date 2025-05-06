@@ -33,11 +33,12 @@ const ReviewUI = () => {
               top: `${comment.position.y}%`,
               transform: "translate(-50%, -50%)",
             }}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               console.log(comment);
             }}
           >
-            <div className="pointer-cursor flex w-[1.5rem] h-[1.5rem] justify-center items-center rounded-[1rem] bg-[#3ECF8E] text-[16px] leading-none leading-[initial] text-white">
+            <div className="cursor-pointer flex w-[1.5rem] h-[1.5rem] justify-center items-center rounded-[1rem] bg-[#3ECF8E] text-[16px] leading-none leading-[initial] text-white">
               {index + 1}
             </div>
           </div>

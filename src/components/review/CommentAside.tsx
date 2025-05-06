@@ -4,7 +4,7 @@ import useStore from "../../store/useReviewPage";
 import CommentItem from "./CommentItem";
 import type { Comments } from "../../store/ReviewPage";
 
-const ReviewAside = () => {
+const CommentAside = () => {
   const page_id = useStore((state) => state.page_id);
   const reviewer_id = useStore((state) => state.reviewer_id);
   const getReviewerById = useStore((state) => state.getReviewerById);
@@ -53,4 +53,4 @@ const ReviewAside = () => {
   );
 };
 
-export default ReviewAside;
+export default CommentAside;
