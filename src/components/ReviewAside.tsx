@@ -5,11 +5,18 @@ import ReviewAsidePages from "./ReviewAsidePages";
 import ReviewAsideReviewersList from "./ReviewAsideReviewersList";
 const ReviewAside = () => {
   return (
-    <aside className="w-[240px] min-h-full flex-shrink-0">
-      <Panel className="h-full p-[1rem] flex flex-col gap-[1.5rem]" borderDirection="right">
-        <ReviewAsideHeader />
-        <ReviewAsidePages />
-        <ReviewAsideReviewersList />
+    <aside className="max-w-[240px] w-full flex-shrink-0 overflow-hidden h-[calc(100vh-4rem)]">
+      <Panel
+        className="h-full flex flex-col p-[1rem] gap-[1rem]"
+        borderDirection="right"
+      >
+        <header>
+          <ReviewAsideHeader />
+        </header>
+        <section className="overflow-y-auto flex-1 flex flex-col gap-[1rem]">
+          <ReviewAsidePages />
+          <ReviewAsideReviewersList />
+        </section>
       </Panel>
     </aside>
   );
