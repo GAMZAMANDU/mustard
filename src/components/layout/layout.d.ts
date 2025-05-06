@@ -1,5 +1,7 @@
-export interface layoutProps {
-  children: React.ReactNode;
+export interface flexibleComponentProps {
   className?: string;
 }
 
+export interface layoutProps extends flexibleComponentProps {
+  children: React.ReactNode;
+}
