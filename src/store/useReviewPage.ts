@@ -11,7 +11,7 @@ interface Store {
   setPages: (pages: Page[]) => void;
   setPageId: (pageId: string) => void;
   setReviewers: (reviewers: Reviewer[]) => void;
-  setReviewerId: (reviewerId: string) => void;
+  setReviewerId: (reviewerId: string | null) => void;
   addComment: (reviewerId: string, comment: Comments) => void;
   getTotalCommentsCount: () => number;
   getReviewerCommentsCount: (reviewerId: string) => number;
@@ -31,7 +31,7 @@ const useStore = create<Store>()((set, get) => ({
   setPages: (pages: Page[]) => set({ pages }),
   setPageId: (pageId: string) => set({ page_id: pageId }),
   setReviewers: (reviewers: Reviewer[]) => set({ reviewers }),
-  setReviewerId: (reviewerId: string) => set({ reviewer_id: reviewerId }),
+  setReviewerId: (reviewerId: string | null) => set({ reviewer_id: reviewerId }),
 
   // 코멘트 추가
   addComment: (reviewerId: string, comment: Comments) =>
