@@ -13,11 +13,11 @@ const ReviewAsideReviewersList = () => {
       <div className="flex flex-col" onClick={(e) => e.stopPropagation()}>
         {reviewers.map((reviewer) => (
           <ReviewAsideReviewersItem
-            img={reviewer.img}
             key={reviewer.id}
             text={reviewer.name}
             id={reviewer.id}
-            selected={reviewer.id === reviewer_id}
+            img={reviewer.img}
+            selected={reviewer.id  === reviewer_id}
           />
         ))}
       </div>

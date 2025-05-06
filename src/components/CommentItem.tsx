@@ -49,7 +49,7 @@ const CommentItem = ({
         </div>
       </header>
       <section className="flex flex-col gap-[0.25rem]">
-        <div className="inline-flex w-fit h-[1.35rem] px-[4px] justify-center items-center bg-[#1D3A2D] rounded-[16px] flex-grow-0 gap-[0.5rem]">
+        <div className="inline-flex w-fit h-[1.35rem] px-[4px] justify-center items-center bg-[#1D3A2D] rounded-[16px] flex-grow-0 gap-[0.25rem]">
           <div className="flex w-[1rem] h-[1rem] justify-center items-center rounded-[1rem] bg-[#3ECF8E] text-[12px] leading-none leading-[initial]">
             {index + 1}
           </div>
