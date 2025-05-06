@@ -1,5 +1,5 @@
-import Text from "./Text";
-import useStore from "../store/useReviewPage";
+import Text from "../Text";
+import useStore from "../../store/useReviewPage";
 
 interface ReviewAsidePagesBlockProps {
   text: string;

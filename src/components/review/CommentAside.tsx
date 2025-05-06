@@ -1,8 +1,8 @@
-import Panel from "./layout/Panel";
-import Text from "./Text";
-import useStore from "../store/useReviewPage";
+import Panel from "../layout/Panel";
+import Text from "../Text";
+import useStore from "../../store/useReviewPage";
 import CommentItem from "./CommentItem";
-import type { Comments } from "../store/ReviewPage";
+import type { Comments } from "../../store/ReviewPage";
 
 const ReviewAside = () => {
   const page_id = useStore((state) => state.page_id);

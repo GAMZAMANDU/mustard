@@ -1,5 +1,5 @@
-import useStore from "../store/useReviewPage";
-import type { Comments } from "../store/ReviewPage";
+import useStore from "../../store/useReviewPage";
+import type { Comments } from "../../store/ReviewPage";
 
 const ReviewUI = () => {
   const pages = useStore((state) => state.pages);

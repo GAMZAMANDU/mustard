@@ -1,19 +1,22 @@
 import Header from "./components/Header";
-import ReviewAside from "./components/ReviewAside";
+import ReviewAside from "./components/review/ReviewAside";
 import { useEffect } from "react";
 import { generateMockData } from "./data/generateMockData";
 import useStore from "./store/useReviewPage";
-import CommentAside from "./components/CommentAside";
-import ReviewUI from "./components/ReviewUI";
+import CommentAside from "./components/review/CommentAside";
+import ReviewUI from "./components/review/ReviewUI";
 
 function App() {
   const setPages = useStore((state) => state.setPages);
   const setReviewers = useStore((state) => state.setReviewers);
   const setPageId = useStore((state) => state.setPageId);
 
-  const pageName = ['main','main/pop-up','choice']
-  const pageImage = ['/assets/ui/Netflix-0.png','/assets/ui/Netflix-1.png','/assets/ui/Netflix-2.png']
-
+  const pageName = ["main", "main/pop-up", "choice"];
+  const pageImage = [
+    "/assets/ui/Netflix-0.png",
+    "/assets/ui/Netflix-1.png",
+    "/assets/ui/Netflix-2.png",
+  ];
 
   useEffect(() => {
     const { pages, reviewers } = generateMockData(pageName, pageImage, 4, 5);

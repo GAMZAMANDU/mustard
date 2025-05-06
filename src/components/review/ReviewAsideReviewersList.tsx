@@ -1,6 +1,6 @@
-import Text from "./Text";
+import Text from "../Text";
 import ReviewAsideReviewersItem from "./ReviewAsideReviewersItem";
-import useStore from "../store/useReviewPage";
+import useStore from "../../store/useReviewPage";
 
 const ReviewAsideReviewersList = () => {
   const reviewers = useStore((state) => state.reviewers);
@@ -17,7 +17,7 @@ const ReviewAsideReviewersList = () => {
             text={reviewer.name}
             id={reviewer.id}
             img={reviewer.img}
-            selected={reviewer.id  === reviewer_id}
+            selected={reviewer.id === reviewer_id}
           />
         ))}
       </div>

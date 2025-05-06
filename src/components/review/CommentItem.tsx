@@ -1,6 +1,6 @@
-import type { Comments } from "../store/ReviewPage";
-import Text from "./Text";
-import useStore from "../store/useReviewPage";
+import type { Comments } from "../../store/ReviewPage";
+import Text from "../Text";
+import useStore from "../../store/useReviewPage";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
