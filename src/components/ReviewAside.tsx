@@ -11,7 +11,6 @@ const ReviewAside = () => {
         <ReviewAsidePages />
         <ReviewAsideReviewersList />
       </Panel>
-
     </aside>
   );
 };
