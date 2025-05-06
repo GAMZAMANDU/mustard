@@ -2,6 +2,7 @@ import Panel from "./layout/Panel";
 import Text from "./Text";
 import useStore from "../store/useReviewPage";
 import CommentItem from "./CommentItem";
+import type { Comments } from "../store/ReviewPage";
 
 const ReviewAside = () => {
   const page_id = useStore((state) => state.page_id);
@@ -15,13 +16,18 @@ const ReviewAside = () => {
     (state) => state.getTotalCommentsCount
   );
 
+  // 현재 페이지의 코멘트만 필터링
+  const filteredComments = (comments: Comments[]) => {
+    return comments.filter((comment) => comment.pageId === page_id);
+  };
+
   const commentsCount = !!reviewer_id
-    ? getReviewerCommentsCount(reviewer_id)
-    : getTotalCommentsCount();
+    ? filteredComments(getReviewerById(reviewer_id)?.comments || []).length
+    : filteredComments(getTotalComments()).length;
 
   const comments = !!reviewer_id
-    ? getReviewerById(reviewer_id)?.comments || []
-    : getTotalComments();
+    ? filteredComments(getReviewerById(reviewer_id)?.comments || [])
+    : filteredComments(getTotalComments());
 
   return (
     <aside className="max-w-[320px] w-full flex-shrink-0 overflow-hidden h-[calc(100vh-4rem)]">
@@ -38,12 +44,9 @@ const ReviewAside = () => {
           />
         </header>
         <section className="overflow-y-auto flex-1 flex flex-col gap-[1rem]">
-          {comments.map(
-            (comment, index) =>
-              comment.pageId === page_id && (
-                <CommentItem key={comment.id} {...comment} index={index} />
-              )
-          )}
+          {comments.map((comment: Comments, index: number) => (
+            <CommentItem key={comment.id} {...comment} index={index} />
+          ))}
         </section>
       </Panel>
     </aside>
