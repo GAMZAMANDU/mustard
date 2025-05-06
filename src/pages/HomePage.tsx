@@ -20,12 +20,14 @@ const HomePage = () => {
           description="Watch TV shows online, watch movies online"
           img="/assets/ui/Netflix-2.png"
           reviewer="/assets/ui/Netflix.png"
+          pageName="Netflix"
         />
         <Article
           name="Google Gemini"
           description="Chat to supercharge your ideas"
           img="/assets/ui/Gemini-0.png"
           reviewer="/assets/ui/Gemini.png"
+          pageName="Gemini"
         />
       </div>
     </main>
