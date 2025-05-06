@@ -2,6 +2,7 @@ import Text from "./Text";
 import useStore from "../store/useReviewPage";
 
 interface ReviewAsideReviewersItemProps {
+  img: string;
   text: string;
   selected?: boolean;
   id: string;
@@ -11,6 +12,7 @@ const ReviewAsideReviewersItem = ({
   text,
   selected = false,
   id,
+  img,
 }: ReviewAsideReviewersItemProps) => {
   const setReviewerId = useStore((state) => state.setReviewerId);
   return (
@@ -19,7 +21,7 @@ const ReviewAsideReviewersItem = ({
       onClick={() => setReviewerId(id)}
     >
       <img
-        src="/assets/Avatar.svg"
+        src={img}
         alt="avatar"
         className={`bg-[#1A1A1A] rounded-[14px] w-[24px] h-[24px] ${
           selected &&
