@@ -3,6 +3,7 @@ import ReviewAside from "./components/ReviewAside";
 import { useEffect } from "react";
 import { generateMockData } from "./data/generateMockData";
 import useStore from "./store/useReviewPage";
+import CommentAside from "./components/CommentAside";
 
 function App() {
   const setPages = useStore((state) => state.setPages);
@@ -19,8 +20,9 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex flex-1">
+      <main className="flex justify-between flex-1">
         <ReviewAside />
+        <CommentAside />
       </main>
     </div>
   );
