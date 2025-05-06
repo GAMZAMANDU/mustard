@@ -1,4 +1,3 @@
-import React from "react";
 import Text from "./Text";
 import ReviewAsidePagesBlock from "./ReviewAsidePagesBlock";
 
