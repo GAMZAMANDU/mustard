@@ -11,8 +11,12 @@ function App() {
   const setReviewers = useStore((state) => state.setReviewers);
   const setPageId = useStore((state) => state.setPageId);
 
+  const pageName = ['main','main/pop-up','choice']
+  const pageImage = ['/assets/ui/Netflix-0.png','/assets/ui/Netflix-1.png','/assets/ui/Netflix-2.png']
+
+
   useEffect(() => {
-    const { pages, reviewers } = generateMockData(3, 4, 5);
+    const { pages, reviewers } = generateMockData(pageName, pageImage, 4, 5);
     setPages(pages);
     setReviewers(reviewers);
     setPageId(pages[0].id);

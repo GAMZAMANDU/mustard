@@ -2,6 +2,7 @@ import useStore from "../store/useReviewPage";
 import type { Comments } from "../store/ReviewPage";
 
 const ReviewUI = () => {
+  const pages = useStore((state) => state.pages);
   const page_id = useStore((state) => state.page_id);
   const reviewer_id = useStore((state) => state.reviewer_id);
   const getReviewerById = useStore((state) => state.getReviewerById);
@@ -19,11 +20,10 @@ const ReviewUI = () => {
     <main className="relative flex items-center justify-center h-[calc(100vh-4rem)]">
       <div className="relative w-[56rem] max-h-full">
         <img
-          src="/assets/ui/Netflix-0.png"
+          src={pages.find((p) => p.id === page_id)?.img}
           alt="review-page"
           className="object-contain w-full h-full"
         />
-        {/* 코멘트 마커 레이어 */}
         {comments.map((comment, index) => (
           <div
             key={comment.id}

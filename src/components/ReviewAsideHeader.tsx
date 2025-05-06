@@ -12,7 +12,7 @@ const ReviewAsideHeader = () => {
         color="white"
         weight="bold"
         size="lg"
-        text="E-commerce Redesign"
+        text="Netflix UI"
         className="!mb-[1rem]"
       />
       <div className="flex gap-[1.5rem]">

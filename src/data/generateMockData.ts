@@ -2,11 +2,11 @@ import { faker } from '@faker-js/faker';
 import type { Page, Reviewer, Comments, CommentPosition } from "../store/ReviewPage";
 
 // Page 데이터 생성 함수
-const generatePage = (): Page => {
+const generatePage = (name: string, img: string): Page => {
   return {
     id: faker.string.uuid(),
-    name: faker.system.fileName(),
-    img: faker.image.url()
+    name,
+    img
   };
 }; 
 
@@ -22,7 +22,6 @@ const generateCommentPosition = (pageId: string): CommentPosition => {
 // Comment 데이터 생성 함수
 const generateComment = (pages: Page[], reviewerId: string): Comments => {
   const pageId = faker.helpers.arrayElement(pages).id;
-  
   return {
     id: faker.string.uuid(),
     pageId: pageId,
@@ -39,7 +38,8 @@ const generateReviewer = (pages: Page[], commentsPerReviewer: number): Reviewer 
   const reviewerId = faker.string.uuid();
   const comments = Array(commentsPerReviewer)
     .fill(null)
-    .map(() => generateComment(pages, reviewerId));
+    .map(() => generateComment(pages, reviewerId))
+    .sort((a, b) => b.created_at.getTime() - a.created_at.getTime());
 
   return {
     id: reviewerId,
@@ -51,13 +51,15 @@ const generateReviewer = (pages: Page[], commentsPerReviewer: number): Reviewer 
 
 // 전체 모의 데이터 생성 함수
 export const generateMockData = (
-  pageCount: number, 
+  pageNames: string[], 
+  pageImages: string[],
   reviewerCount: number, 
   commentsPerReviewer: number
 ) => {
-  const pages = Array(pageCount)
-    .fill(null)
-    .map(() => generatePage());
+  // pageNames와 pageImages 배열을 사용하여 페이지 생성
+  const pages = pageNames.map((name, index) => 
+    generatePage(name, pageImages[index] || '')
+  );
     
   const reviewers = Array(reviewerCount)
     .fill(null)
