@@ -7,11 +7,13 @@ import useStore from "./store/useReviewPage";
 function App() {
   const setPages = useStore((state) => state.setPages);
   const setReviewers = useStore((state) => state.setReviewers);
-
+  const setPageId = useStore((state) => state.setPageId);
+  
   useEffect(() => {
     const { pages, reviewers } = generateMockData(3, 4, 5);
     setPages(pages);
     setReviewers(reviewers);
+    setPageId(pages[0].id);
   }, []);
   
   return (

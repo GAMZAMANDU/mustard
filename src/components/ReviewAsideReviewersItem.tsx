@@ -15,7 +15,7 @@ const ReviewAsideReviewersItem = ({
   const setReviewerId = useStore((state) => state.setReviewerId);
   return (
     <div
-      className="gap-[0.5rem] cursor-pointer flex h-[36px] px-[12px] items-center self-stretch rounded-[4px] mt-[0.75rem]"
+      className="gap-[0.5rem] cursor-pointer flex h-[36px] items-center self-stretch rounded-[4px] mt-[0.75rem]"
       onClick={() => setReviewerId(id)}
     >
       <img
