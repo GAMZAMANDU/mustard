@@ -8,6 +8,7 @@ export interface Reviewer {
   id: string;
   name: string;
   img: string;
+  comments: Comments[];
 }
 
 export interface CommentPosition {
