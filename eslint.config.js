@@ -23,6 +23,19 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      '@typescript-eslint/member-delimiter-style': [
+        'error',
+        {
+          multiline: {
+            delimiter: 'comma',
+            requireLast: true,
+          },
+          singleline: {
+            delimiter: 'comma',
+            requireLast: true,
+          },
+        },
+      ],
     },
   },
 )
