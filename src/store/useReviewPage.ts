@@ -15,6 +15,9 @@ interface Store {
   addComment: (reviewerId: string, comment: Comments) => void;
   getTotalCommentsCount: () => number;
   getReviewerCommentsCount: (reviewerId: string) => number;
+  getReviewerById: (reviewerId: string) => Reviewer | undefined;
+  getReviewerNameById: (reviewerId: string) => string;
+  getTotalComments: () => Comments[];
 }
 
 const useStore = create<Store>()((set, get) => ({
@@ -53,6 +56,21 @@ const useStore = create<Store>()((set, get) => ({
     const state = get();
     const reviewer = state.reviewers.find((r: Reviewer) => r.id === reviewerId);
     return reviewer ? reviewer.comments.length : 0;
+  },
+
+  getReviewerById: (reviewerId: string) => {
+    const state = get();
+    return state.reviewers.find((r: Reviewer) => r.id === reviewerId);
+  },
+
+  getReviewerNameById: (reviewerId: string) => {
+    const reviewer = get().getReviewerById(reviewerId);
+    return reviewer?.name || "";
+  },
+
+  getTotalComments: () => {
+    const state = get();
+    return state.reviewers.flatMap((reviewer: Reviewer) => reviewer.comments);
   },
 }));
 
