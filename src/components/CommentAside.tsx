@@ -4,6 +4,7 @@ import useStore from "../store/useReviewPage";
 import CommentItem from "./CommentItem";
 
 const ReviewAside = () => {
+  const page_id = useStore((state) => state.page_id);
   const reviewer_id = useStore((state) => state.reviewer_id);
   const getReviewerById = useStore((state) => state.getReviewerById);
   const getTotalComments = useStore((state) => state.getTotalComments);
@@ -23,7 +24,7 @@ const ReviewAside = () => {
     : getTotalComments();
 
   return (
-    <aside className="max-w-[320px] w-full min-h-full flex-shrink-0">
+    <aside className="max-w-[320px] w-full flex-shrink-0 overflow-hidden h-[calc(100vh-4rem)]">
       <Panel
         className="h-full p-[1rem] flex flex-col gap-[1rem]"
         borderDirection="right"
@@ -36,10 +37,13 @@ const ReviewAside = () => {
             text={`Comments (${commentsCount})`}
           />
         </header>
-        <section className="overflow-y-scroll flex flex-col gap-[1rem]">
-          {comments.map((comment, index) => (
-            <CommentItem key={comment.id} {...comment} index={index} />
-          ))}
+        <section className="overflow-y-auto flex-1 flex flex-col gap-[1rem]">
+          {comments.map(
+            (comment, index) =>
+              comment.pageId === page_id && (
+                <CommentItem key={comment.id} {...comment} index={index} />
+              )
+          )}
         </section>
       </Panel>
     </aside>

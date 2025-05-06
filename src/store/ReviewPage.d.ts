@@ -19,6 +19,7 @@ export interface CommentPosition {
 
 export interface Comments {
   id: string;
+  pageId: string;
   contents: string;
   created_at: Date;
   reviewerId: string;

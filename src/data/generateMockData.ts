@@ -20,13 +20,16 @@ const generateCommentPosition = (pageId: string): CommentPosition => {
 };
 
 // Comment 데이터 생성 함수
-const generateComment = (pageId: string, reviewerId: string): Comments => {
+const generateComment = (pages: Page[], reviewerId: string): Comments => {
+  const pageId = faker.helpers.arrayElement(pages).id;
+  
   return {
     id: faker.string.uuid(),
+    pageId: pageId,
     contents: faker.lorem.paragraph(),
     created_at: faker.date.recent(),
     reviewerId: reviewerId,
-    tag: faker.helpers.arrayElement(['header', 'main', 'logo', 'list', 'footer']),
+    tag: faker.helpers.arrayElement(['header', 'main', 'logo', 'list', 'footer', 'nav', 'button', 'form', 'image']),
     position: generateCommentPosition(pageId)
   };
 }; 
@@ -36,10 +39,7 @@ const generateReviewer = (pages: Page[], commentsPerReviewer: number): Reviewer 
   const reviewerId = faker.string.uuid();
   const comments = Array(commentsPerReviewer)
     .fill(null)
-    .map(() => generateComment(
-      faker.helpers.arrayElement(pages).id,
-      reviewerId
-    ));
+    .map(() => generateComment(pages, reviewerId));
 
   return {
     id: reviewerId,
