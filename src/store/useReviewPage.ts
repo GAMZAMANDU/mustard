@@ -8,17 +8,16 @@ interface Store {
   reviewer_id: string | null;
   reviewers: Reviewer[];
 
-  // 기본 상태 설정
   setPages: (pages: Page[]) => void;
   setPageId: (pageId: string) => void;
   setReviewers: (reviewers: Reviewer[]) => void;
   setReviewerId: (reviewerId: string) => void;
-
-  // 코멘트 관련 간단한 액션
   addComment: (reviewerId: string, comment: Comments) => void;
+  getTotalCommentsCount: () => number;
+  getReviewerCommentsCount: (reviewerId: string) => number;
 }
 
-const useStore = create<Store>()((set) => ({
+const useStore = create<Store>()((set, get) => ({
   // 초기 상태
   pages: [],
   reviewer_id: null,
@@ -39,8 +38,22 @@ const useStore = create<Store>()((set) => ({
           ? { ...reviewer, comments: [...reviewer.comments, comment] }
           : reviewer
       ),
-    }))
+    })),
 
+  // 전체 코멘트 수를 반환하는 함수
+  getTotalCommentsCount: () => {
+    const state = get();
+    return state.reviewers.reduce((total: number, reviewer: Reviewer) => {
+      return total + reviewer.comments.length;
+    }, 0);
+  },
+
+  // 특정 리뷰어의 코멘트 수를 반환하는 함수
+  getReviewerCommentsCount: (reviewerId: string) => {
+    const state = get();
+    const reviewer = state.reviewers.find((r: Reviewer) => r.id === reviewerId);
+    return reviewer ? reviewer.comments.length : 0;
+  },
 }));
 
 export default useStore;
