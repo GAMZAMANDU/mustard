@@ -1,7 +1,7 @@
 import Text from "../Text";
 import useStore from "../../store/useReviewPage";
 import { useParams } from "react-router-dom";
-
+import Likes from "./Like";
 const ReviewAsideHeader = () => {
   const reviewers = useStore((state) => state.reviewers);
   const reviewersLength = reviewers.length.toString();
@@ -38,7 +38,7 @@ const ReviewAsideHeader = () => {
           <Text color="gray" weight="normal" size="sm" text="Reviewers" />
         </div>
         <div>
-          <Text color="white" weight="bold" size="lg" text="16" />
+          <Likes />
           <Text color="gray" weight="normal" size="sm" text="Likes" />
         </div>
       </div>

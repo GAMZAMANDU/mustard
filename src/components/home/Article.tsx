@@ -1,4 +1,3 @@
-import React from 'react'
 import Text from '../Text'
 import { useNavigate } from 'react-router-dom';
 interface ArticleProps {
